@@ -1,4 +1,3 @@
-"use strict";
 class Usuario {
     constructor(nombre, apellido, libros, mascotas) {
         this.nombre = nombre;
