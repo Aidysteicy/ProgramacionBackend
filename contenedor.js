@@ -1,33 +1,36 @@
+const fs = require('fs').promises;
+
 class Contenedor {
 
-    static id = 1
-
-    constructor(fs, ruta){
-        this.fs = fs;
+    constructor( ruta){
         this.ruta = ruta;
+        this.fs = fs;
     }
 
     async save(objeto){
-        let productos = await this.getAll();
-        if(productos === undefined){
-            productos = await this.fs.writeFile(this.ruta, JSON.stringify([{...objeto, id: Contenedor.id}], null, 2))
-        }else{
-            productos.forEach(() => {
-            if(productos.find(prod => prod.id === Contenedor.id)){
-                Contenedor.id++;
+        let id = 1
+        try {
+            let productos = await this.getAll();
+            if(productos === undefined){
+                productos = await this.fs.writeFile(this.ruta, JSON.stringify([{...objeto, id: id}], null, 2))
+            }else{
+                productos.forEach(() => {
+                    if(productos.find(prod => prod.id === id)){
+                        id++;
+                    }
+                });
+            await this.fs.writeFile(this.ruta, JSON.stringify([...productos, {...objeto, id: id}], null, 2))
             }
-            });
-            await this.fs.writeFile(this.ruta, JSON.stringify([...productos, {...objeto, id: Contenedor.id}], null, 2))
+        return id;
+        } catch (error) {
+            console.log(error);
         }
-        console.log(Contenedor.id)
-        return Contenedor.id;
     }
 
     async getbyId(id){
         const productos = await this.getAll();
         const prodID = productos.find(prod => prod.id === id)
         if(prodID){
-            console.log(prodID);
             return prodID; 
         }
         console.log('No existe un producto con ese ID')
@@ -36,9 +39,8 @@ class Contenedor {
 
     async getAll(){
         try {
-            let productos = await this.fs.readFile(this.ruta, 'utf-8');
-            let prodJson = JSON.parse(productos);
-            //console.log(prodJson)
+            const productos = await this.fs.readFile(this.ruta, 'utf-8');
+            const prodJson = JSON.parse(productos);
             return prodJson;
         } catch (error) {
             console.log('Archivo no Existe')
@@ -46,10 +48,10 @@ class Contenedor {
     }
 
     async deleteById(id){
-        let productos = await this.getAll();
+        const productos = await this.getAll();
         const prodID = productos.find(prod => prod.id === id)
         if(prodID){
-            let nuevos_productos = productos.filter(prod => prod.id !== id)
+            const nuevos_productos = productos.filter(prod => prod.id !== id)
             await this.fs.writeFile(this.ruta, JSON.stringify(nuevos_productos, null, 2))
         }
     }
@@ -58,6 +60,16 @@ class Contenedor {
         try {
             await this.fs.writeFile(this.ruta, [])
             console.log('Todos los productos fueron borrados')
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async getIDRandom(){
+        try {
+            let productos = await this.getAll();
+            let num = Math.floor(Math.random()*productos.length)+1;
+            return await this.getbyId(num);
         } catch (error) {
             console.log(error);
         }
