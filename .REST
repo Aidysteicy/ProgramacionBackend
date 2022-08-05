@@ -1,0 +1,32 @@
+
+GET http://localhost:8080/api/productosRandom HTTP/1.1
+
+###
+
+GET http://localhost:8080/api/productos HTTP/1.1
+
+###
+
+POST http://localhost:8080/api/productos HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Colores",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224"
+}
+
+###
+
+DELETE http://localhost:8080/api/productos/5 HTTP/1.1
+
+###
+
+PUT  http://localhost:8080/api/productos/7 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Lapiz",
+    "price": 34.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224"
+}

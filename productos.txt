@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Escuadra",
+    "price": 93.78,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 1
+  },
+  {
+    "title": "Calculadora",
+    "price": 123.45,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 2
+  },
+  {
+    "title": "Globo Terráqueo",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 3
+  },
+  {
+    "title": "Globo Terráqueo",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 4
+  },
+  {
+    "title": "Cartulina",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 6
+  },
+  {
+    "title": "Colores",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 5
+  },
+  {
+    "title": "Colores",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 7
+  },
+  {
+    "title": "Colores",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 8
+  },
+  {
+    "title": "Colores",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 9
+  },
+  {
+    "title": "Colores",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 10
+  },
+  {
+    "title": "Colores",
+    "price": 345.67,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "id": 11
+  }
+]
