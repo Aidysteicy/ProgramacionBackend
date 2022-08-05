@@ -67,7 +67,6 @@ class Contenedor {
         try {
             const productos = await this.getAll();
             const prodID = productos.find(prod => prod.id === id)
-            console.log(prodID)
             if(prodID){
                 const nuevos_productos = productos.filter(prod => prod.id !== id)
                 await this.fs.writeFile(this.ruta, JSON.stringify(nuevos_productos, null, 2))

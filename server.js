@@ -41,10 +41,9 @@ rutaProductos.put('/:id', async (req,res)=>{
     res.json(mod)
 });
 
-rutaProductos.delete('/api/productos/:id', async (req,res)=>{
+rutaProductos.delete('/:id', async (req,res)=>{
     const {id}=req.params
     const prod = await contenedor.deleteById(+id)
-    console.log(prod)
     res.json(prod)
 });
 
