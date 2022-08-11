@@ -1,0 +1,15 @@
+h1{
+    font-family:cursive
+}
+body {
+    width: 60%;
+    height: 90%;
+    margin: 0 auto;
+}
+div{
+    margin-top: 30px;
+}
+#container{
+    background-color: rgb(181, 223, 249);
+    padding: 3rem;
+}
