@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Camara",
+    "price": "156.8",
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/summer-26/512/Camera-512.png",
+    "id": 1
+  },
+  {
+    "title": "Sombrero Playero",
+    "price": "230",
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/summer-26/512/Hat-512.png",
+    "id": 2
+  },
+  {
+    "title": "Pelota",
+    "price": "60",
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/summer-26/512/Ball-512.png",
+    "id": 3
+  },
+  {
+    "title": "Brujula",
+    "price": "150",
+    "thumbnail": "https://cdn1.iconfinder.com/data/icons/camping-65/500/compass-512.png",
+    "id": 4
+  },
+  {
+    "title": "Bikini",
+    "price": "199.99",
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/summer-26/512/Bikini-512.png",
+    "id": 5
+  },
+]
