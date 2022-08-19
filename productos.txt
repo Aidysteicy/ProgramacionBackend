@@ -1,0 +1,8 @@
+[
+  {
+    "title": "Camara",
+    "price": "199.99",
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/summer-26/512/Camera-512.png",
+    "id": 1
+  }
+]
