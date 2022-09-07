@@ -1,0 +1,107 @@
+use ecommerce
+db.createCollection("productos")
+db.createCollection("mensajes")
+db.productos.insertMany([
+    {
+        title:"Vestido", 
+        price: 120, 
+        thumbnail:"https://img2.freepng.es/20180310/ioe/kisspng-dress-skirt-clip-art-hand-painted-dresses-5aa46839577df3.0943199215207240253584.jpg"
+    },
+    {
+        title: "Falda",
+        price: 540,
+        thumbnail: "https://www.dsigno.es/blog/wp-content/uploads/2018/10/tipos-de-faldas.jpg" 
+    },
+    {
+        title: "Campera",
+        price: 4800,
+        thumbnail: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/005/896/products/productos-tamano-ok-091-46699f4d0836a5932315816171976320-1024-1024.png"
+    },
+    {
+        title: "Camiseta deportiva",
+        price: 920,
+        thumbnail: "https://http2.mlstatic.com/D_NQ_NP_960634-MLA50879240445_072022-V.jpg" 
+    },
+    {
+        title: "Jogging",
+        price: 3200,
+        thumbnail: "https://www.heavenimagenes.com/heavencommerce/68ac9d04-8767-4aca-9951-49f2fea1383b/images/v2/ALPINA/2007290928473118_05_medium.jpg" 
+    },
+    {
+        title: "Buzo",
+        price: 3870,
+        thumbnail: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/161/800/products/5900311-625444ed61dc4d897215928408471193-1024-1024.jpg" 
+    },
+    {
+        title: "Short",
+        price: 2500,
+        thumbnail: "https://media.istockphoto.com/photos/blue-short-pants-for-men-isolated-on-white-background-picture-id1149139173?k=20&m=1149139173&s=612x612&w=0&h=0LdwseUzcXxbtAlV-cKtnWOO3_EdZp10z_Rzhdz5V4g=" 
+    },
+    {
+        title: "Crop Top",
+        price: 1350,
+        thumbnail: "https://cdn.fashiola.es/L595162719/monki-fitted-crop-top.jpg" 
+    },
+    {
+        title: "Camisa Cuadros",
+        price: 1900,
+        thumbnail: "https://http2.mlstatic.com/D_NQ_NP_822877-MLA46374685703_062021-W.jpg" 
+    },
+    {
+        title: "Bolso",
+        price: 4190,
+        thumbnail: "https://d368r8jqz0fwvm.cloudfront.net/16075-product_list_sm/bolso-anton-40-lts.jpg" 
+    }
+])
+db.mensajes.insertMany([
+    {
+        email: "user1@gmail.com",
+        fecha: 01/09/22,
+        mensaje: "Hola mensaje1" 
+    },
+    {
+        email: "user2@gmail.com",
+        fecha: 02/09/22,
+        mensaje: "Hola mensaje2" 
+    },
+    {
+        email: "user3@gmail.com",
+        fecha: 02/09/22,
+        mensaje: "Hola mensaje3" 
+    },
+    {
+        email: "user4@gmail.com",
+        fecha: 02/09/22,
+        mensaje: "Hola mensaje4" 
+    },
+    {
+        email: "user5@gmail.com",
+        fecha: 04/09/22,
+        mensaje: "Hola mensaje5" 
+    },
+    {
+        email: "user6@gmail.com",
+        fecha: 04/09/22,
+        mensaje: "Hola mensaje6" 
+    },
+    {
+        email: "user7@gmail.com",
+        fecha: 05/09/22,
+        mensaje: "Hola mensaje7" 
+    },
+    {
+        email: "user8@gmail.com",
+        fecha: 06/09/22,
+        mensaje: "Hola mensaje8" 
+    },
+    {
+        email: "user9@gmail.com",
+        fecha: 09/09/22,
+        mensaje: "Hola mensaje9" 
+    },
+    {
+        email: "user10@gmail.com",
+        fecha: 09/09/22,
+        mensaje: "Hola mensaje10" 
+    },
+])
