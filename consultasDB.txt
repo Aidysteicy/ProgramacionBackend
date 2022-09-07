@@ -1,0 +1,72 @@
+show dbs
+use ecommerce
+db.productos.find().pretty()
+db.mensajes.find().pretty()
+db.productos.estimatedDocumentCount()
+db.mensajes.estimatedDocumentCount()
+
+/***********Agregar producto Nuevo*************/
+
+db.productos.insertOne(
+    {
+        title:"Zapatos Deportivos", 
+        price: 4500, 
+        thumbnail:"https://cdn.koaj.co/92003-thickbox_default/tenis-deportivos.jpg"
+    })
+
+/**********Productos < 1000 pesos**************/
+
+db.productos.find({price: {$lt: 1000}})
+
+/*****1000 pesos < Productos < 3000 pesos******/
+
+db.productos.find({$and: [{price: {$gt: 1000}}, {price: {$lt: 3000}}]})
+
+/*************Productos >3000 pesos*************/
+
+db.productos.find({price: {$gt: 3000}})
+
+/*******Nombre del 3er producto mas barato*******/
+
+db.productos.find().skip(2).limit(1).sort({price: 1})
+
+/**Hacer update agregando el campo stock en 100**/
+
+db.productos.updateMany({}, {$set: {stock: 100}}, true)
+
+/***Cambiar stock a 0 en productos > 4000 pesos***/
+
+db.productos.updateMany({price: {$gt: 4000}}, {$set: {stock: 100}})
+
+/**********Borrar productos < 1000 pesos***********/
+
+db.productos.deleteMany({price: {$lt: 1000}})
+
+/***********Agrega productos eliminados************/
+
+db.productos.insertMany([
+    {
+       title: "Falda",
+        price: 540,
+        thumbnail: "https://www.dsigno.es/blog/wp-content/uploads/2018/10/tipos-de-faldas.jpg" 
+    },
+    {
+       title: "Camiseta deportiva",
+        price: 920,
+        thumbnail: "https://http2.mlstatic.com/D_NQ_NP_960634-MLA50879240445_072022-V.jpg" 
+    },
+    {
+        title:"Vestido", 
+        price: 120, 
+        thumbnail:"https://img2.freepng.es/20180310/ioe/kisspng-dress-skirt-clip-art-hand-painted-dresses-5aa46839577df3.0943199215207240253584.jpg"
+    }
+])
+
+/**********Usuario read pepe clave 'asd456'***********/
+use admin
+db.createUser(
+    {
+        user: "pepe", 
+        pwd: "asd456", 
+        roles: [
+            {role: "read", db: "ecommerce"}]})
