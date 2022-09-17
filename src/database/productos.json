@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "timestamp": 1661479634941,
+    "nombre": "Libros",
+    "descripcion": "varios",
+    "codigo": "A00003",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "price": 345.67,
+    "stock": 5
+  },
+  {
+    "id": 2,
+    "timestamp": 1661479748494,
+    "nombre": "Marcadores",
+    "descripcion": "varios",
+    "codigo": "A00002",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "price": 345.67,
+    "stock": 50
+  }
+]

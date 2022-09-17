@@ -1,0 +1,85 @@
+//Test de los productos
+
+GET http://localhost:8080/api/productos HTTP/1.1
+
+###
+
+GET http://localhost:8080/api/productos/1/ HTTP/1.1
+
+###
+
+POST http://localhost:8080/api/productos HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "Colores",
+    "descripcion": "probando",
+    "codigo": "A00011",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "price": 345.67,
+    "stock": 25
+}
+
+###
+
+DELETE http://localhost:8080/api/productos/4 HTTP/1.1
+
+###
+
+PUT  http://localhost:8080/api/productos/3 HTTP/1.1
+content-type: application/json
+
+{   
+    "nombre": "Libros",
+    "descripcion": "varios",
+    "codigo": "A00003",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "price": 90,
+    "stock": 50
+    }
+
+
+
+###
+//Test del carrito
+
+GET http://localhost:8080/api/carrito/ HTTP/1.1
+
+###
+
+
+GET http://localhost:8080/api/carrito/632421d1edf4d66ab282f24b/productos HTTP/1.1
+
+###
+
+POST http://localhost:8080/api/carrito/ HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "Coloresotro",
+    "descripcion": "varios",
+    "codigo": "A00001",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "price": 345.67,
+    "stock": 50
+}
+
+###
+
+DELETE http://localhost:8080/api/carrito/63250c5086893eb1e13df224 HTTP/1.1
+
+###
+
+POST http://localhost:8080/api/carrito/63250c5086893eb1e13df224/productos HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "Lapices",
+    "descripcion": "varios",
+    "codigo": "A00005",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "price": 399.99,
+    "stock": 100
+}
+
+###

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="center">Formulario de Productos</h1>
+    <form action="http://localhost:8080/api/productos" method="post">
+        <div class="form-group row">
+            <label for="nombre" class="col-sm-2 col-form-label">Producto</label>
+            <input type="text" class="col-sm-10" id="nombre" name="nombre" placeholder="Nombre">
+        </div>
+        <div class="form-group row">
+            <label for="descripcion" class="col-sm-2 col-form-label">Descripcion </label>
+            <input type="text" class="col-sm-10" name="descripcion" id="descripcion" placeholder="...">
+        </div>
+        <div class="form-group row">
+            <label for="foto" class="col-sm-2 col-form-label">Foto del Producto</label>
+            <input type="text" class="form-control-file col-sm-10" id="foto" name="foto" placeholder="https://...">
+        </div>
+        <div class="form-group row">
+            <label for="precio" class="col-sm-2 col-form-label">Precio del Producto</label>
+            <input type="text" class="form-control-file col-sm-10" id="precio" name="precio">
+        </div>
+        <div class="form-group row">
+            <label for="stock" class="col-sm-2 col-form-label">Stock del Producto</label>
+            <input type="number" class="form-control-file col-sm-10" id="stock" name="stock">
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+</body>
+</html>
