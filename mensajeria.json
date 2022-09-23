@@ -1,0 +1,24 @@
+[
+  {
+    "author": {
+      "id": "aidy@gmail.com",
+      "nombre": "Steicy",
+      "apellido": "Abreu",
+      "edad": "27",
+      "alias": "bebitafiufiu",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "holaaaa"
+  },
+  {
+    "author": {
+      "id": "cesea0726@gmail.com",
+      "nombre": "Ana",
+      "apellido": "Martinez",
+      "edad": "25",
+      "alias": "",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "hola que tal"
+  }
+]

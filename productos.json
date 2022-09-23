@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Pantalones",
+    "price": "158.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/598.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Gorro",
+    "price": "913.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1100.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Atún",
+    "price": "973.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/207.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Mesa",
+    "price": "844.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/473.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Salchichas",
+    "price": "323.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/983.jpg"
+  }
+]
