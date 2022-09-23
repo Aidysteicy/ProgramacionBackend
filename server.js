@@ -34,7 +34,6 @@ app.get('/', (req,res)=>{
 
 app.get('/api/productos-test', async (req,res)=>{
     const data = await apiProductos.productosAleatorios()
-    console.log(data)
     res.render('productosTest', {data})
 })
 
