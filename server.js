@@ -43,35 +43,41 @@ const postSchema = [{
     author: authorSchema,
     text: textSchema
 }]
-
-io.on('connection', async socket=>{
-    console.log('Usuario conectado: ' +socket.id)
-    const productos = await contenedor.getAll()
-    const messages = await mensajeria.getAll()
-    let normalizedMensajes = messages
-    if(messages!='nok'){
-        normalizedMensajes = normalize(messages, postSchema)
-    }
-    socket.emit('tabla-productos', productos)
-    socket.emit('central-mensajes', normalizedMensajes)
-    socket.on('nuevo-producto', async data=>{
-        await contenedor.save(data)
-        const nuevo_prod = await contenedor.getAll()
-        io.sockets.emit('tabla-productos', nuevo_prod)
+try {
+    io.on('connection', async socket=>{
+        console.log('Usuario conectado: ' +socket.id)
+        const productos = await contenedor.getAll()
+        const messages = await mensajeria.getAll()
+        let normalizedMensajes = messages
+        if(messages!='nok'){
+            normalizedMensajes = normalize(messages, postSchema)
+        }
+        socket.emit('tabla-productos', productos)
+        socket.emit('central-mensajes', normalizedMensajes)
+        socket.on('nuevo-producto', async data=>{
+            await contenedor.save(data)
+            const nuevo_prod = await contenedor.getAll()
+            io.sockets.emit('tabla-productos', nuevo_prod)
+        })
+        socket.on('nuevo-mensaje', async data=>{
+            await mensajeria.save(data)
+            const nuevo_mens = await mensajeria.getAll()
+            const normalizedMensaje = normalize(nuevo_mens, postSchema)
+            io.sockets.emit('central-mensajes', normalizedMensaje)
+        })
+    
+        socket.on('disconnect', ()=>{
+            console.log('Usuario desconectado')
+        })
     })
-    socket.on('nuevo-mensaje', async data=>{
-        await mensajeria.save(data)
-        const nuevo_mens = await mensajeria.getAll()
-        io.sockets.emit('central-mensajes', nuevo_mens)
-    })
-
-    socket.on('disconnect', ()=>{
-        console.log('Usuario desconectado')
-    })
-})
+} catch (error) {
+    console.log(error)
+}
 
 //Configuracion del puerto
 const PORT = process.env.PORT || 4000
 httpServer.listen(PORT,()=> {
     console.log(`Escuchando en el puerto: ${PORT}`);
 });
+server.on('error', error => console.log(`Error en servidor: ${error}`))
+//if(err) throw new Error('Error : mensaje de error')

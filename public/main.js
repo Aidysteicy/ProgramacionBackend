@@ -8,7 +8,7 @@ const postSchema =
     [
         {
            author: authorSchema,
-            text: textSchema
+           text: textSchema
         } 
     ]
 
@@ -21,7 +21,7 @@ function renderMessage(data){
         html = denormalizedMensajes.map((elem)=>{
         return (`<div style="color:brown">
                     <strong style="color:blue">${elem.author.id}</strong>
-                    [${fecha}]: 
+                    [${elem.author.nombre}]: 
                     <em style="color:green"> ${elem.text}</em>
 
                     <img style="width:100px" src="${elem.author.avatar}" alt="MDN">

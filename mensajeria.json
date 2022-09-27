@@ -20,5 +20,104 @@
       "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
     },
     "text": "hola que tal"
+  },
+  {
+    "author": {
+      "id": "anaramirez@gmail.com",
+      "nombre": "Ana",
+      "apellido": "Ramirez",
+      "edad": "20",
+      "alias": "anitaaa",
+      "avatar": ""
+    },
+    "text": "holaaaa"
+  },
+  {
+    "author": {
+      "id": "yolejabreu@gmail.com",
+      "nombre": "Yole",
+      "apellido": "Abreu",
+      "edad": "50",
+      "alias": "osita",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "Probando 1234"
+  },
+  {
+    "author": {
+      "id": "fulanita@gmail.com",
+      "nombre": "fulanita",
+      "apellido": "noseque",
+      "edad": "35",
+      "alias": "lafuli",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "si esta funcionando"
+  },
+  {
+    "author": {
+      "id": "aidy@gmail.com",
+      "nombre": "Steicy",
+      "apellido": "Abreu",
+      "edad": "27",
+      "alias": "bebitafiufiu",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "no lo se rick"
+  },
+  {
+    "author": {
+      "id": "anaramirez@gmail.com",
+      "nombre": "Ana",
+      "apellido": "Martinez",
+      "edad": "25",
+      "alias": "",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "probando y no se termina mas"
+  },
+  {
+    "author": {
+      "id": "aidy@gmail.com",
+      "nombre": "Steicy",
+      "apellido": "Abreu",
+      "edad": "25",
+      "alias": "",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "ya me duele la cabeza"
+  },
+  {
+    "author": {
+      "id": "anaramirez@gmail.com",
+      "nombre": "Ana",
+      "apellido": "Ramirez",
+      "edad": "",
+      "alias": "",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "Estoy probando la recarga"
+  },
+  {
+    "author": {
+      "id": "cesea0726@gmail.com",
+      "nombre": "",
+      "apellido": "",
+      "edad": "",
+      "alias": "",
+      "avatar": ""
+    },
+    "text": "A ver a ver"
+  },
+  {
+    "author": {
+      "id": "aidy@gmail.com",
+      "nombre": "Steicy",
+      "apellido": "",
+      "edad": "",
+      "alias": "",
+      "avatar": ""
+    },
+    "text": "ahora si creo q sirve bien"
   }
 ]

@@ -34,7 +34,7 @@ class Contenedor {
                 await this.fs.writeFile(this.ruta, JSON.stringify([...productos, {...objeto, id: id}], null, 2))
             }
         } catch (error) {
-            console.log(error);
+            throw new Error('Error : No se pudo guardar')
         }
     }
 
