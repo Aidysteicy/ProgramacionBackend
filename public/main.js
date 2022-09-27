@@ -23,7 +23,6 @@ function renderMessage(data){
                     <strong style="color:blue">${elem.author.id}</strong>
                     [${elem.author.nombre}]: 
                     <em style="color:green"> ${elem.text}</em>
-
                     <img style="width:100px" src="${elem.author.avatar}" alt="MDN">
                 </div>`)
         }).join(" ")

@@ -79,5 +79,4 @@ const PORT = process.env.PORT || 4000
 httpServer.listen(PORT,()=> {
     console.log(`Escuchando en el puerto: ${PORT}`);
 });
-server.on('error', error => console.log(`Error en servidor: ${error}`))
-//if(err) throw new Error('Error : mensaje de error')
+httpServer.on('error', error => console.log(`Error en servidor: ${error}`))

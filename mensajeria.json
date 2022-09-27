@@ -119,5 +119,16 @@
       "avatar": ""
     },
     "text": "ahora si creo q sirve bien"
+  },
+  {
+    "author": {
+      "id": "hfjfkdkslj@gmail.com",
+      "nombre": "Nueva",
+      "apellido": "A",
+      "edad": "30",
+      "alias": "",
+      "avatar": "https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700160/60027009-chica-icono-plana-avatar-%C3%BAnico-icono-de-la-gente-de-la-gran-colecci%C3%B3n-de-avatar-imagen-vectorial.jpg"
+    },
+    "text": "Hola hola"
   }
 ]
