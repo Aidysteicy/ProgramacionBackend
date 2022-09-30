@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const sessionR = require('./session.js')
+const ApiProductos = require ('../api/productos.js')
+const apiProductos = new ApiProductos()
 
 router.get('/', (req,res)=>{
     res.render('login')
