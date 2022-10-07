@@ -31,11 +31,11 @@ app.set('view engine', 'hbs')
 
 //let Users = [{_id: 1, username: 'Ana', password: 'admin'}]
 
-const isValidPassword= (user, password)=>{
+function isValidePassword(user, password){
     return bcrypt.compareSync(password, user.password)
 }
 
-const createHash = (password) =>{
+function createHash (password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
 }
 
@@ -51,15 +51,15 @@ passport.deserializeUser(async (id, done) =>{
 
 passport.use('login', new LocalStrategy(
     async (username, password, done)=>{
-        const user = await Users.getAll()
-        //console.log(user)
-        if (user=='nok') {
+        const user = await Users.getbyField({email: username})
+        console.log(user)
+        if (user=='nok' || !user) {
             return done(null, false, { message: `User ${username} not found` })
         }
             
-         if (!isValidePassword(user, password)) {
-             return done(null, false, { message: 'Password incorrect' })
-         }
+         //if (!isValidePassword(user, password)) {
+         //    return done(null, false, { message: 'Password incorrect' })
+         //}
 
         if (user.password !== password) {
             return done(null, false, { message: 'Password incorrecto' })
@@ -72,13 +72,13 @@ passport.use('login', new LocalStrategy(
 passport.use('signup', new LocalStrategy(
     {passReqToCallback: true},
     async (req, username, password, done)=>{
-        let user = await Users.getbyField({username: username})
+        let user = await Users.getbyField({email: username})
         if(user){
             return done(null, user, {message: `User ${username} already exists`})
         }
         const newUser={
-            username,
-            password: createHash(password),
+            email: username,
+            password//: createHash(password),
         }
         const guardar = await Users.save(newUser, 'usuarios')
         if(guardar=='ok'){
