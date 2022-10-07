@@ -4,10 +4,12 @@ const {Server: ServerHttp} = require('http')
 const {Server: ServerIo} = require('socket.io')
 const httpServer = new ServerHttp(app)
 const io = new ServerIo(httpServer)
+const ContenedorMongo = require('./contenedores/contenedorMongo.js')
+const model = require('./models/productos.js')
+const modelM = require('./models/mensajes.js')
+const contenedor = new ContenedorMongo(model)
+const mensajeria = new ContenedorMongo(modelM)
 
-const Contenedor = require('./contenedor')
-const contenedor = new Contenedor('./productos.json');
-const mensajeria = new Contenedor('./mensajeria.json')
 
 const normalizr = require('normalizr');
 const {normalize, schema} = normalizr
@@ -21,7 +23,6 @@ const postSchema = [{
 
 try {
     io.on('connection', async socket=>{
-        console.log('Usuario conectado: ' +socket.id)
         const productos = await contenedor.getAll()
         const messages = await mensajeria.getAll()
         let normalizedMensajes = messages
@@ -40,10 +41,6 @@ try {
             const nuevo_mens = await mensajeria.getAll()
             const normalizedMensaje = normalize(nuevo_mens, postSchema)
             io.sockets.emit('central-mensajes', normalizedMensaje)
-        })
-    
-        socket.on('disconnect', ()=>{
-            console.log('Usuario desconectado')
         })
     })
 } catch (error) {

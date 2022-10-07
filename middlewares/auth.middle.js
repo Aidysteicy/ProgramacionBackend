@@ -1,9 +1,7 @@
-const authMiddleware = async (req, res, next) =>{
-    const { username, admin } = req.session
-    if(username && admin){
-        return next()
-    }
-    return res.status(400).send(`<h1>Usuario no autenticado</h1>`)
-}
-
+const authMiddleware  = (req, res, next) =>{ 
+    if(req.isAuthenticated()){
+        next()
+    }else{
+        return res.status(200).render('login')
+    }}
 module.exports = authMiddleware

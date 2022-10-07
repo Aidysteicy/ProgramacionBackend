@@ -1,9 +1,9 @@
-const Contenedor = require ("../contenedor.js")
+const Contenedor = require ("../contenedores/contenedorMongo")
 const generarProducto = require('../utils/generarProducto.js')
 
 class ApiProductos extends Contenedor {
     constructor(){
-        super('productos.json')
+        super('Productos')
     }
 
     async productosAleatorios(){
