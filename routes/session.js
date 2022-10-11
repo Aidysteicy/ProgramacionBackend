@@ -34,7 +34,7 @@ router.post('/login', passport.authenticate('login',{
 }))
 
 router.post('/signup', passport.authenticate('signup',{
-    successRedirect: '/home',
+    successRedirect: '/login',
     failureRedirect: '/fail',
     failureFlash: true
 }))

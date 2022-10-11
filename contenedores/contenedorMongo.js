@@ -49,7 +49,7 @@ class ContenedorMongo {
 
     async getbyField(field){
         try {
-            const doc = await this.modelo.findOne(field)
+            const doc = await this.modelo.find(field)
             return doc
         } catch (error) {
             console.log(error)
