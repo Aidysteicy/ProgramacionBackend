@@ -1,18 +1,30 @@
 const express = require("express");
 const router = express.Router();
 const sessionR = require('./session.js')
-const ApiProductos = require ('../api/productos.js')
-const apiProductos = new ApiProductos()
+const apiRoute = require('./apiRoute.js')
 
 router.get('/', (req,res)=>{
     res.render('login')
 })
 
-router.get('/api/productos-test', async (req,res)=>{
-    const data = await apiProductos.productosAleatorios()
-    res.render('productosTest', {data})
+router.get('/info', (req,res)=>{
+    try {
+        const args = process.argv.slice(2)
+        const path = process.cwd()
+        const id = process.pid
+        const version = process.version
+        const so = process.platform
+        const memory = process.memoryUsage().rss
+        res.status(200).render('info', {args, path, id, version, so, memory})
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
 })
 
 router.use(sessionR)
+router.use('/api', apiRoute)
 
 module.exports = router;

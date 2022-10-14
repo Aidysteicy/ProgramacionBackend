@@ -10,7 +10,6 @@ const modelM = require('./models/mensajes.js')
 const contenedor = new ContenedorMongo(model)
 const mensajeria = new ContenedorMongo(modelM)
 
-
 const normalizr = require('normalizr');
 const {normalize, schema} = normalizr
 
@@ -48,9 +47,17 @@ try {
 }
 
 //******Configuración del Server******/
+const yargs = require('yargs/yargs')(process.argv.slice(2))
+const argsDefault = yargs.default(
+    {
+        port: '8080'
+    }
+).argv
+const PORT = argsDefault.port
 
-const PORT = process.env.PORT || 3000
-
-httpServer.listen(PORT, ()=>{
+httpServer.listen(PORT, err => {
+    if (err) {
+        throw new Error(`Error en el servidor: ${err}`)
+    }
     console.info(`Server running in ${PORT}`)
 })
