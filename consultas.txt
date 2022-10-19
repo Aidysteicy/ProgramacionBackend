@@ -1,0 +1,18 @@
+
+nodemon server.js
+
+forever start server.js
+forever list
+forever stopall
+
+pm2 start server.js --name="serverCluster" --watch -i max -- 8081
+pm2 list
+pm2 stop serverCluster
+
+pm2 start server.js --name="serverFork" --watch -- 8082
+pm2 list
+pm2 stop serverFork
+
+tasklist /fi "imagename eq nginx.exe"
+./nginx.exe -s reload
+./nginx.exe -s stop

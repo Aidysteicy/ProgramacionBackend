@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const sessionR = require('./session.js')
 const apiRoute = require('./apiRoute.js')
+const numCPUs= require('os').cpus().length
 
 router.get('/', (req,res)=>{
     res.render('login')
@@ -15,7 +16,7 @@ router.get('/info', (req,res)=>{
         const version = process.version
         const so = process.platform
         const memory = process.memoryUsage().rss
-        res.status(200).render('info', {args, path, id, version, so, memory})
+        res.status(200).render('info', {args, path, id, version, so, memory, numCPUs})
     } catch (error) {
         res.status(500).json({
             success: false,
