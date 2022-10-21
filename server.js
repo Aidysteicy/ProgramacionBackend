@@ -60,7 +60,7 @@ const numCPUs = require('os').cpus().length
 
 if(mode==="CLUSTER"){
     if(cluster.isPrimary){
-        for(let i=0; i<numCPUS; i++){
+        for(let i=0; i<numCPUs; i++){
             cluster.fork()
         }
         cluster.on("exit", (worker) => {
