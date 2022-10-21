@@ -1,7 +1,7 @@
 nodemon server.js 8080 FORK
 nodemon server.js 8080 CLUSTER
 
-forever start server.js
+forever start server.js --port 8080 --mode FORK
 forever list
 forever stopall
 
