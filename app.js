@@ -41,7 +41,7 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
-//app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(cookieParser(process.env.COOKIES_SECRET))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
