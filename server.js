@@ -50,14 +50,37 @@ try {
 const yargs = require('yargs/yargs')(process.argv.slice(2))
 const argsDefault = yargs.default(
     {
-        port: '8080'
+        port: '8080',
     }
 ).argv
 const PORT = argsDefault.port
+const mode = process.argv.slice(3) || FORK
+const numCPUs = require('os').cpus().length
 
-httpServer.listen(PORT, err => {
-    if (err) {
-        throw new Error(`Error en el servidor: ${err}`)
+if(mode==="CLUSTER"){
+    if(cluster.isPrimary){
+        for(let i=0; i<numCPUS; i++){
+            cluster.fork()
+        }
+        cluster.on("exit", (worker) => {
+            console.log(`Process ID : ${worker.process.pid} finished)
+        }
+    }else{
+        httpServer.listen(PORT, err => {
+            if (err) {
+                throw new Error(`Error en el servidor: ${err}`)
+            }
+            console.info(`Server Cluster running in ${PORT}`)
+        })
     }
-    console.info(`Server running in ${PORT}`)
-})
+}
+if(mode==="FORK"){
+    httpServer.listen(PORT, err => {
+        if (err) {
+            throw new Error(`Error en el servidor: ${err}`)
+        }
+        console.info(`Server Fork running in ${PORT}`)
+    })
+}
+    
+    
