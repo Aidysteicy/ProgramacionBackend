@@ -3,11 +3,10 @@ const router = express.Router();
 const ApiProductos = require ('../api/productos.js')
 const apiProductos = new ApiProductos()
 const {fork} = require('child_process')
-const cluster = require('cluster')
 const numCPUs= require('os').cpus().length
 
 router.get('/randoms', (req, res)=>{
-    res.send(`Numero random`)
+    res.send(`Numero aleatorio en puerto ${process.argv.slice(2)}`)
 })
 router.get('/randoms/fork', (req,res)=>{
     try {
