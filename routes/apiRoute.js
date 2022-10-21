@@ -5,18 +5,10 @@ const apiProductos = new ApiProductos()
 const {fork} = require('child_process')
 const cluster = require('cluster')
 const numCPUs= require('os').cpus().length
-/*
+
 router.get('/randoms', (req, res)=>{
-    if(cluster.isPrimary){
-        console.log(`Master ${process.pid} is running`)
-        for(let i=0; i<numCPUs; i++){
-            cluster.fork()
-        }
-        cluster.on('exit',(worker, code, signal)=>{
-            console.log(`Worker ${worker.process.pid} died`)
-        }
-    }
-})*/
+    res.send(`Numero random`)
+})
 router.get('/randoms/fork', (req,res)=>{
     try {
         const {cant} = parseInt(req.query) || 5
@@ -32,18 +24,6 @@ router.get('/randoms/fork', (req,res)=>{
         })
     }
 })
-/*
-router.get('/randoms/cluster', (req,res)=>{
-    if(cluster.isPrimary){
-        console.log(`Master ${process.pid} is running`)
-        for(let i=0; i<numCPUs; i++){
-            cluster.fork()
-        }
-        cluster.on('exit',(worker, code, signal)=>{
-            console.log(`Worker ${worker.process.pid} died`)
-        }
-    }
-})*/
 router.get('/productos-test', async (req,res)=>{
     const data = await apiProductos.productosAleatorios()
     res.render('productosTest', {data})
