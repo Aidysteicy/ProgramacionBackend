@@ -1,5 +1,5 @@
-
-nodemon server.js
+nodemon server.js 8080 FORK
+nodemon server.js 8080 CLUSTER
 
 forever start server.js
 forever list
@@ -9,9 +9,14 @@ pm2 start server.js --name="serverCluster" --watch -i max -- 8081
 pm2 list
 pm2 stop serverCluster
 
-pm2 start server.js --name="serverFork" --watch -- 8082
+pm2 start server.js --name="serverFork" --watch -- 8080
 pm2 list
 pm2 stop serverFork
+
+pm2 start server.js --name="serverCluster" --watch -i 1 -- 8082
+pm2 start server.js --name="serverCluster" --watch -i 1 -- 8083
+pm2 start server.js --name="serverCluster" --watch -i 1 -- 8084
+pm2 start server.js --name="serverCluster" --watch -i 1 -- 8085
 
 tasklist /fi "imagename eq nginx.exe"
 ./nginx.exe -s reload
