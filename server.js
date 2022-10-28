@@ -64,7 +64,7 @@ if(mode==="CLUSTER"){
             cluster.fork()
         }
         cluster.on("exit", (worker) => {
-            console.log(`Process ID : ${worker.process.pid} finished)
+            console.log(`Process ID : ${worker.process.pid} finished`)
         }
     }else{
         httpServer.listen(PORT, err => {
