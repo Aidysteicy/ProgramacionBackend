@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Sopa",
+    "price": "205.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/928.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Bacon",
+    "price": "537.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/813.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Pollo",
+    "price": "28.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/430.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Camiseta",
+    "price": "395.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1056.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Atún",
+    "price": "688.00",
+    "thumbnail": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/151.jpg"
+  }
+]

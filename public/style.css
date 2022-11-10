@@ -1,0 +1,15 @@
+h1{
+    font-family:cursive
+}
+
+div{
+    margin-top: 30px;
+}
+.container{
+    background-color: rgb(181, 223, 249);
+    padding: 3rem;
+}
+.imagen{
+    width: 100px;
+    height: 100px;
+}
