@@ -46,15 +46,15 @@ try {
 } catch (error) {
     console.log(error)
 }
-
+const PORT = process.env.PORT
 //******Configuración del Server******/
-const yargs = require('yargs/yargs')(process.argv.slice(2))
+/*const yargs = require('yargs/yargs')(process.argv.slice(2))
 const argsDefault = yargs.default(
     {
         port: '8080',
     }
 ).argv
-const PORT = process.env.PORT
+
 const mode = process.argv.slice(3) || FORK
 const numCPUs = require('os').cpus().length
 
@@ -82,6 +82,12 @@ if(mode==="FORK"){
         }
         console.info(`Server Fork running in ${PORT}`)
     })
-}
+}*/
+httpServer.listen(PORT, err => {
+    if (err) {
+        throw new Error(`Error en el servidor: ${err}`)
+    }
+    console.info(`Server Fork running in ${PORT}`)
+})
     
     
