@@ -2,5 +2,20 @@
 <div class="container flex">
     <h1>Bienvenid@ {{username}}</h1>
 </div>
-{{>productos}}
+<h1 class="title" style="font-size: 60px;">Stock de Productos</h1>
+{{#if isRender}}
+    <div class="d-flex p-2 flex-wrap contenedor">
+        {{#each productos}}
+            <div class="card tarjeta">
+                <img class="card-img-top img-fluid" alt="..." src="{{this.foto}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.nombre}}</h5>
+                    <p class="card-text">Precio: {{this.precio}} $</p>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    {{else}}
+        <div class="contenedor card tarjeta title" style="height:200px">No hay Productos</div>
+{{/if}}
 {{>footer}}

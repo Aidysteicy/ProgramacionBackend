@@ -6,6 +6,7 @@ const numCPUs= require('os').cpus().length
 const compression = require('compression')
 const logger = require('../logger.js')
 
+
 router.get('/', (req,res)=>{
     logger.info(`Login de usuario`)
     res.render('login')

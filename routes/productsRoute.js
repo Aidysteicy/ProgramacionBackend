@@ -1,20 +1,17 @@
 const productosDaoMongo = require('../daos/ProductosDaoMongo.js') ;
 const productosDao = new productosDaoMongo()
 const { Router } = require('express') ;
+const logger = require('../logger.js')
 const rutaProductos = Router()
-
-//const ContenedorMongo = require('./contenedores/contenedorMongo.js')
-//const model = require('./models/productos.js')
-//const contenedor = new ContenedorMongo(model)
+const authMiddleware = require('../middlewares/auth.middle');
 
 //Variable booleana que controla si el usuario es administrador
 const admin = true
 
 //**********Rutas a los productos***********//
 
-rutaProductos.get('/', async (req,res)=>{
+rutaProductos.get('/', authMiddleware, async (req,res)=>{
     const prod = await productosDao.getAll()
-    console.log(prod)
     if(prod.length!=0 && prod!='nok'){
         res.render('main', {isRender: true, productos: prod})
     }else{
@@ -22,13 +19,14 @@ rutaProductos.get('/', async (req,res)=>{
     }
 });
 
-rutaProductos.get('/:id', async (req,res)=>{
+rutaProductos.get('/:id', authMiddleware, async (req,res)=>{
     const {id} = req.params
     const prod = await productosDao.getbyId(id);
     if(prod!='nok'){
         res.render('main', {isRender: true, productos: prod})
      }else{
-         res.send({msg: 'No existe un producto con ese ID'})
+         logger.error('No existe un producto con ese ID')
+         res.redirect('/')
      }
 });
 //Agregar producto
@@ -37,13 +35,13 @@ rutaProductos.post('/', async (req,res)=>{
         const producto = req.body
         const status = await productosDao.save(producto, 'productos')
         if(status!='nok'){
-            res.send({msg: 'Producto Guardado'}) 
+            logger.info('Producto Guardado') 
          }else{
-            res.send({msg: 'Error al añadir producto'})
+            logger.error('Error al añadir producto')
          }
     }else{
-        res.json({error: -1, descripcion: 'Ruta /api/productos metodo POST no autorizada'})
-    }
+        logger.error({error: -1, descripcion: 'Ruta /api/productos metodo POST no autorizada'})
+    }res.redirect('/')
 });
 //Actualizar producto
 rutaProductos.put('/:id', async (req,res)=>{
@@ -52,12 +50,13 @@ rutaProductos.put('/:id', async (req,res)=>{
         const prod = req.body
         const mod = await productosDao.saveByID(id, prod)
         if(mod.length!=0 && mod!='nok'){
-            res.send({msg: 'Producto Actualizado'}) 
+            logger.info('Producto Actualizado') 
          }else{
-             res.send({msg: 'Error al actualizar producto'})
+            logger.error('Error al actualizar producto')
          }
     }else{
-        res.json({error: -1, descripcion: 'Ruta /api/productos/:id metodo PUT no autorizada'})
+        logger.error({error: -1, descripcion: 'Ruta /api/productos/:id metodo PUT no autorizada'})
+        res.redirect('/')
     }
     
 });
@@ -67,19 +66,20 @@ rutaProductos.delete('/:id', async (req,res)=>{
         const {id}=req.params
         const prod = await productosDao.deleteById(id)
         if(prod.length!=0 && prod!='nok'){
-            res.send({msg: 'Producto Eliminado'}) 
+            logger.info('Producto Eliminado') 
          }else{
-            res.send({msg: 'No existe un producto con ese ID'})
+            logger.warn('No existe un producto con ese ID')
          }
     }else{
-        res.json({error: -1, descripcion: 'Ruta /api/productos/:id metodo DELETE no autorizada'})
+        logger.error({error: -1, descripcion: 'Ruta /api/productos/:id metodo DELETE no autorizada'})
+        res.redirect('/')
     }
 });
 
 //**********Rutas no implementadas***********//
 
 rutaProductos.get('*', (req,res)=>{
-    res.redirect('/')
+    res.redirect('/login')
 })
 
 

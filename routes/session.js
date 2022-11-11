@@ -3,12 +3,17 @@ const authMiddleware = require('../middlewares/auth.middle');
 const passport = require('passport')
 const logger = require('../logger.js')
 const router = express.Router();
+const rutaCarrito = require('./carsRoute.js') ;
+const rutaProductos = require('./productsRoute.js') ;
+
+router.use('/api/productos', rutaProductos)
+router.use('/api/carrito', rutaCarrito)
 
 router.get('/home', authMiddleware, (req,res)=>{
     try {
         const username = req.user
         logger.info(`usuario ${username} autenticado`)
-        res.status(200).render('main',{user: username})
+        res.status(200).redirect('/api/productos')
     } catch (error) {
         logger.error(error)
         res.status(500).json({

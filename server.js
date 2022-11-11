@@ -1,8 +1,7 @@
 const app = require('./app')
 const {fork} = require('child_process')
 const cluster = require('cluster')
-const rutaCarrito = require('./routes/carsRoute.js') ;
-const rutaProductos = require('./routes/productsRoute.js') ;
+
 const { json, urlencoded } = require ('express');
 const { createTransport } = require('nodemailer');
 const twilio = require('twilio')
@@ -10,12 +9,11 @@ const twilio = require('twilio')
 //******************************************* */
 app.use(json());
 app.use(urlencoded({extended: true}));
-app.use('/api/productos', rutaProductos)
-app.use('/api/carrito', rutaCarrito)
+
 
 //********************Mail******************* */
-/*
-const TEST_MAIL = 'aidysteicy@gmail.com'
+
+const TEST_MAIL = 'aidines.espinoza@gmail.com'
 
 const transporter = createTransport({
    service: 'gmail',
@@ -28,7 +26,7 @@ const transporter = createTransport({
 
 const mailOptions = {
     from: 'Servidor Node.js',
-    to: 'aidysteicy@gmail.com',
+    to: TEST_MAIL,
     subject: 'Mail de prueba desde Node.js',
     html: '<h1 style="color: blue;">Contenido de prueba desde <span style="color: green;">Node.js con Fede</span></h1>',
     attachments: [
@@ -46,7 +44,7 @@ const mailOptions = {
         console.log(error)
      }
 })()
-*/
+
 //******************Twilio SMS****************** */
 /*
 const accountSid = process.env.ACCOUNT_ASID
