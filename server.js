@@ -3,63 +3,28 @@ const {fork} = require('child_process')
 const cluster = require('cluster')
 
 const { json, urlencoded } = require ('express');
-const { createTransport } = require('nodemailer');
-const twilio = require('twilio')
+const twilio = require('twilio');
+const logger = require('./logger');
 
 //******************************************* */
 app.use(json());
 app.use(urlencoded({extended: true}));
 
-
-//********************Mail******************* */
-
-const TEST_MAIL = 'aidines.espinoza@gmail.com'
-
-const transporter = createTransport({
-   service: 'gmail',
-   port: 587,
-   auth: {
-       user: 'aidines.espinoza@gmail.com',
-       pass: 'Steicy220695'
-   }
-})
-
-const mailOptions = {
-    from: 'Servidor Node.js',
-    to: TEST_MAIL,
-    subject: 'Mail de prueba desde Node.js',
-    html: '<h1 style="color: blue;">Contenido de prueba desde <span style="color: green;">Node.js con Fede</span></h1>',
-    attachments: [
-        {
-            path: 'https://raw.githubusercontent.com/andris9/Nodemailer/master/assets/nm_logo_200x136.png'
-        }
-    ]
-}
-
-;(async () => {
-    try {
-        const info = await transporter.sendMail(mailOptions)
-        console.log(info)
-     } catch (error) {
-        console.log(error)
-     }
-})()
-
 //******************Twilio SMS****************** */
-/*
+
 const accountSid = process.env.ACCOUNT_ASID
 const authToken = process.env.AUTH_TOKEN
 const client = twilio(accountSid, authToken)
-(async () => {
+;(async () => {
     try {
         const message = await client.messages.create({
         body: 'Hola soy un SMS desde Node.js!',
         from: '+',
         to: '+'
     })
-        console.log(message)
+        logger.info(message)
     } catch (error) {
-        console.log(error)
+        logger.error(error)
     }
 })()
 
@@ -68,18 +33,17 @@ const options = {
     body: 'Hola soy un WSP desde Node.js!',
     mediaUrl: [ 'https://www.chetu.com/img/twilio/partner/twilio-logo.png' ],
     from: 'whatsapp:+19788309704',
-    to: 'whatsapp:+5493518081934'
+    to: 'whatsapp:+543518081934'
  }
 
  ;( async () =>{
     try {
         const message = await client.messages.create(options)
-        console.log(message)
+        logger.info(message)
     } catch (error) {
-        console.log(error)
+        logger.error(error)
     }
 })()
-*/
 
 //****Configuración del puerto del servidor****//
 

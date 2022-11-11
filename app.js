@@ -10,6 +10,7 @@ const configMongo = require('./configMongo.js')
 const ContenedorMongo = require('./contenedores/contenedorMongo.js')
 const model = require('./models/usuarios.js')
 const Users = new ContenedorMongo(model)
+const mandarMail = require('./utils/enviarMail')
 //const isValidPassword = require('./utils/validarPassword')
 const compression = require('compression')
 
@@ -84,10 +85,15 @@ passport.use('signup', new LocalStrategy(
         const newUser = {
             email: username,
             password: createHash(password),
+            nombre: req.body.nombre,
+            direccion: req.body.direccion,
+            telefono: req.body.telefono,
+            avatar: req.body.avatar
         }
         const guardar = await Users.save(newUser, 'usuarios')
         if(guardar=='ok'){
             user = await Users.getbyField({email: username})
+            mandarMail('Nuevo registro', newUser)
         }
         return done(null, user[0])
     }
