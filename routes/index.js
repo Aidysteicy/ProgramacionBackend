@@ -29,6 +29,10 @@ router.get('/info', compression(), (req,res)=>{
     }
 })
 
+router.get('/nuevo', async (req,res)=>{
+    res.render('newProduct')
+});
+
 router.use(sessionR)
 router.use('/api', apiRoute)
 

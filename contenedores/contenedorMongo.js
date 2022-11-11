@@ -10,7 +10,15 @@ class ContenedorMongo {
         this.modelo = modelo;
     }
 
-    async
+    async saveByID(id, objeto){
+        try {
+            await this.modelo.updateOne({_id: id}, {$set:objeto})
+            return 'ok'
+        } catch (error) {
+            console.log(error);
+            return 'nok'
+        }
+    }
 
     async save(objeto, nombre){
         try {
@@ -24,16 +32,6 @@ class ContenedorMongo {
             return 'ok'
         } catch (error) {
             console.log(error)
-            return 'nok'
-        }
-    }
-
-    async saveByID(id, objeto){
-        try {
-            await this.modelo.updateOne({_id: id}, {$set:objeto})
-            return 'ok'
-        } catch (error) {
-            console.log(error);
             return 'nok'
         }
     }
