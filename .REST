@@ -1,0 +1,32 @@
+//Test de los productos
+
+GET http://localhost:3005/cookies HTTP/1.1
+
+###
+
+POST http://localhost:3005/cookies HTTP/1.1
+content-type: application/json
+
+{
+    "name": "age",
+    "value": "20",
+    "expire": ""
+}
+
+###
+
+DELETE http://localhost:3005/cookies/age HTTP/1.1
+
+###
+
+PUT  http://localhost:8080/api/productos/3 HTTP/1.1
+content-type: application/json
+
+{   
+    "nombre": "Libros",
+    "descripcion": "varios",
+    "codigo": "A00003",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "price": 90,
+    "stock": 50
+    }
