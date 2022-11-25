@@ -15,11 +15,11 @@ const flash = require('connect-flash')
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
     defaultLayout: 'index.hbs',
-    layoutsDir: __dirname + '/views/layouts',
-    partialsDir: __dirname + '/views/partials'
+    layoutsDir: __dirname + '/src/views/layouts',
+    partialsDir: __dirname + '/src/views/partials'
 }))
 
-app.set('views', './views')
+app.set('views', './src/views')
 app.set('view engine', 'hbs')
 
 app.use(flash())

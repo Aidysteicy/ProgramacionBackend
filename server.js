@@ -13,7 +13,7 @@ const argsDefault = yargs.default(
 const PORT = process.env.PORT
 const mode = process.argv.slice(3) || FORK
 const numCPUs = require('os').cpus().length
-
+/*
 if(mode==="CLUSTER"){
     if(cluster.isPrimary){
         for(let i=0; i<numCPUs; i++){
@@ -38,7 +38,13 @@ if(mode==="FORK"){
         }
         console.log(`Server Fork running in ${PORT}`)
     })
-}
+}*/
+httpServer.listen(PORT, err => {
+    if (err) {
+        throw new Error(`Error en el servidor: ${err}`)
+    }
+    console.log(`Server Fork running in ${PORT}`)
+})
 
 module.exports = {httpServer, PORT}
     

@@ -35,7 +35,7 @@ function renderMessage(data){
 
 function renderTabla(data){
     let html
-    if(data==='nok'){
+    if(data!=='ok'){
         html =`<tr class="align-middle"><td colspan="3">No hay productos</td></tr>`
     }else{
         html = data.map((elem)=>{

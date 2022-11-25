@@ -1,34 +1,11 @@
 const express =require('express')
 const authMiddleware = require('../middlewares/auth.middle');
 const passport = require('../utils/passport')
-const logger = require('../config/logger.js')
 const router = express.Router();
+const {homeControl, loginControl, logoutControl, failControl} = require('../controller/sessionController')
 
-router.get('/home', authMiddleware, (req,res)=>{
-    try {
-        const username = req.user
-        logger.info(`usuario ${username} autenticado`)
-        res.status(200).render('main',{user: username})
-    } catch (error) {
-        logger.error(error)
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
-    }
-})
-
-router.get('/login', authMiddleware, (req, res)=>{
-    try {
-        res.status(200).redirect('/home')
-    } catch (error) {
-        logger.error(error)
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
-    }
-})
+router.get('/home', authMiddleware, homeControl)
+router.get('/login', authMiddleware, loginControl)
 
 router.post('/login', passport.authenticate('login',{
     successRedirect: '/home',
@@ -46,27 +23,8 @@ router.get('/signup', (req,res)=>{
     res.status(200).render('signup')
 })
 
-router.get('/fail', (req,res)=>{
-    let error_message = req.flash('error')[0]
-    logger.warn(error_message)
-    res.status(200).render('fail', {error_message})
-})
+router.get('/fail', failControl)
 
-router.get('/logout', (req, res, next)=>{
-    const username = req.user
-    req.logout((err)=>{
-         if(err) { 
-             logger.error(err)
-             return next(err)
-         }  
-         res.render('logout', {user: username}) 
-    })
-})
-
-router.get('*', (req, res) => {
-    const { url, method } = req.query
-    logger.warn(`Ruta ${url} con método ${method} no implementada`)
-    res.status(404).send(`Ruta ${url} con método ${method} no implementada`)
-})
+router.get('/logout', logoutControl)
 
 module.exports = router

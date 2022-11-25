@@ -1,9 +1,9 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
-const ContenedorMongo = require('../contenedores/contenedorMongo.js')
+const ProductosDao = require('../daos/productosDaoDB.js')
 const model = require('../models/usuarios.js')
-const Users = new ContenedorMongo(model)
+const Users = new ProductosDao(model)
 //const isValidPassword = require('./validarPassword')
 
 function isValidePassword(user, password){

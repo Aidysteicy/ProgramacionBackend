@@ -32,7 +32,7 @@ class ProductosDaoDb extends ProductosDao {
             await this.modelo.updateOne({_id: id}, {$set:objeto})
             return 'ok'
         } catch (error) {
-            throw new CustomError(404, 'producto no encontrado con ese ID', { id: idBuscado })
+            throw new CustomError(404, 'producto no encontrado con ese ID', { id: id })
         }
        
     }
