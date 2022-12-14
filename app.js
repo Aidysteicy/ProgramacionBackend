@@ -12,6 +12,11 @@ const app = express()
 const compression = require('compression')
 const flash = require('connect-flash')
 
+const { graphqlHTTP } = require('express-graphql')
+const { buildSchema } = require('graphql')
+const crypto = require('crypto')
+
+
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
     defaultLayout: 'index.hbs',
@@ -39,6 +44,7 @@ app.use(cookieParser(process.env.COOKIES_SECRET))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(indexRouter)
+app.use('/graphql', new GraphQLController() );
 app.use(compression())
 
 module.exports = app

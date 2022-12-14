@@ -4,24 +4,6 @@ const {fork} = require('child_process')
 const numCPUs= require('os').cpus().length
 const logger = require('../config/logger.js')
 
-async function randomFork (req,res){
-    try {
-        const {cant} = parseInt(req.query) || 5
-        const forked = fork('configFork.js')
-        forked.send(cant)
-        logger.info("Configuracion fork creada")
-        forked.on("resp", (msg)=>{
-            res.send(msg)
-        })
-    } catch (error) {
-        logger.error(`Error en la ruta: ${error.message}`)
-        res.status(500).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
-
 async function prodAleController (req,res){
     const data = await apiProductos.productosAleatorios()
     if(!data){
@@ -54,4 +36,4 @@ async function infoController (req,res){
     }
 }
 
-module.exports = {randomFork, prodAleController, rutaNoImp, infoController}
+module.exports = {prodAleController, rutaNoImp, infoController}

@@ -1,6 +1,6 @@
 const Contenedor = require ("../daos/productosDaoDB")
 const generarProducto = require('../utils/generarProducto.js')
-import ProductoDto from '../dto/ProductoDto.js';
+const ProductoDto = require('../dto/ProductoDto.js');
 
 class Cotizador {
     static VALOR_DOLAR = 100
@@ -61,13 +61,13 @@ class ApiProductos extends Contenedor {
     async buscarConCotizacionEnDolares(id) {
         if (id) {
             const producto = await this.getById(id);
-            const cotizaciones = { precioDolar: this.cotizador.getPrecioSegunMoneda(producto.precio, 'USD') }
+            const cotizaciones = { precioDolar: Cotizador.getPrecioSegunMoneda(producto.precio, 'USD') }
             const productoDto = new ProductoDto(producto, cotizaciones)
             return productoDto
         } else {
             const productos = await this.productosDao.getAll();
             const productosDtos = productos.map(producto => {
-                const cotizaciones = { precioDolar: this.cotizador.getPrecioSegunMoneda(producto.precio, 'USD') }
+                const cotizaciones = { precioDolar: Cotizador.getPrecioSegunMoneda(producto.precio, 'USD') }
                 const productoDto = new ProductoDto(producto, cotizaciones)
                 return productoDto
             })

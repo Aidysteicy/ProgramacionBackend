@@ -17,6 +17,7 @@ const postSchema = [{
 
 async function misocket (socket){
         const productos = await contenedor.getAll()
+        console.log(productos)
         const messages = await mensajeria.getAll()
         let normalizedMensajes = messages
         if(messages=='ok'){

@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const logger = require('../config/logger.js')
-const { prodAleController, randomFork, rutaNoImp } = require('../controller/apiController.js')
+const { prodAleController, rutaNoImp } = require('../controller/apiController.js')
 
-router.get('/randoms/fork', randomFork)
 router.get('/productos-test', prodAleController)
 router.get('*', rutaNoImp)
 
