@@ -61,3 +61,4 @@ const putProd = async (id, data) => {
   }
 };
 
+module.exports = {testgetProd, testgetProdId, addProd, putProd, delProd, delAll}

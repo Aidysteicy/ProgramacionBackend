@@ -1,48 +1,38 @@
-const { graphqlHTTP } = require( 'express-graphql')
-const { buildSchema } = require( 'graphql')
+const { Producto } = require("../daos/productosDaoDB");
+const contenedor = new Producto();
 
-const schema = buildSchema(`
-input PersonaInput {
-  nombre: String,
-  edad: Int
-}
-type Persona {
-  id: ID!
-  nombre: String,
-  edad: Int
-}
-type Query {
-  getPersona(id: ID!): Persona,
-  getPersonas(campo: String, valor: String): [Persona],
-}
-type Mutation {
-  createPersona(datos: PersonaInput): Persona
-  updatePersona(id: ID!, datos: PersonaInput): Persona,
-  deletePersona(id: ID!): Persona,
-}
-`)
+const getProducts = async () => {
+	const listaProductos = await contenedor.getAll();
+	return listaProductos;
+};
 
-class GraphQLController{
-  constructor(){
-      this.api = new UsuariosApi()
-      this.config = {
-        schema,
-        rootValue: {
-          getPersona: this.api.getPersona,
-          getPersonas: this.api.getPersonas,
-          createPersona: this.api.createPersona,
-          updatePersona: this.api.updatePersona,
-          deletePersona: this.api.deletePersona
-        }
-      }
-      return graphqlHTTP(this.config)
-  }
+const getProdById = async ({ id }) => {
+	const prodById = await contenedor.getbyField(parseInt(id));
+	return prodById;
+};
 
-  
+const postProduct = async ({ data }) => {
+	const idProduct = await contenedor.save(data);
+	return idProduct;
+};
+
+const putProd = async ({ id, data }) => {
+	const response = await contenedor.saveById(parseInt(id), data);
+	return response;
+};
+
+const deleteProdById = async ({ id }) => {
+	const response = await producto.deleteById(parseInt(id));
+	return response;
+};
+
+module.exports = {
+	getProducts,
+	getProdById,
+	postProduct,
+	putProd,
+	deleteProdById
 }
-
-module.exports = { GraphQLController }
-
 
 
 

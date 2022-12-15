@@ -1,9 +1,30 @@
-class Persona {
-    constructor(id, { nombre, edad }) {
-        this.id = id;
-        this.nombre = nombre;
-        this.edad = edad;
-    }
-}
+const { buildSchema } = require("graphql");
 
-module.exports = { Persona }
+const productSchema = buildSchema(`
+type Product {
+    id: ID!
+    nombre: String,
+    descripcion: String,
+    precio: Number,
+    foto: String,
+    stock: Number
+}
+input ProductInput {
+    nombre: String,
+    descripcion: String,
+    precio: Number,
+    foto: String,
+    stock: Number
+}
+type Query {
+    getProducts: [Product],
+    getProdById(id:String): Product,
+}
+type Mutation {
+    postProd(data: ProductInput): Product
+    putProd(id:String, datos: ProductInput): Product
+    deleteProdById(id:String): Product
+}
+`);
+
+module.exports = productSchema;
