@@ -13,7 +13,7 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "forever": "^4.0.3",
-    "graphql": "^16.6.0",
+    "graphql": "^15.8.0",
     "mongoose": "^6.6.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
@@ -33,7 +33,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
   },
   "keywords": [],
   "author": "",
