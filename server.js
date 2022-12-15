@@ -3,10 +3,6 @@ const cluster = require('cluster')
 const {Server: ServerHttp} = require('http')
 const httpServer = new ServerHttp(app)
 
-const {addProd, testgetProd, testgetProdId} = require('./src/test/axios')
-
-testgetProd()
-
 //******Configuración del Server******/
 const yargs = require('yargs/yargs')(process.argv.slice(2))
 const argsDefault = yargs.default(
