@@ -29,20 +29,20 @@ describe("Test Completo de Funciones:", () => {
 	// --------------------------------------------------------------------------------------------------------//
 	describe("GET /api/productos", () => {
 		it("Solicitar todos los productos: ", async () => {
-			let response = await request.get("/api/productos");
+			let response = await request.get("/productos");
 			expect(response.status).to.eql(200);
 		});
 	});
 
 	// --------------------------------------------------------------------------------------------------------//
-	describe("POST /api/productos", () => {
+	describe("POST /productos", () => {
 		it("Agregar producto:", async () => {
-			let response = await request.post("/api/productos").send(productNew);
+			let response = await request.post("/productos").send(productNew);
 			expect(response.status).to.eql(200);
 		});
 
 		it("Verificar datos de producto agregado", async () => {
-			let addedProduct = await request.get("/api/productos/" + 4);
+			let addedProduct = await request.get("/productos" + 4);
 			expect(addedProduct.body.name).to.eql(productNew.name);
 			expect(parseInt(addedProduct.body.price)).to.eql(
 				parseInt(productNew.price)
@@ -52,16 +52,16 @@ describe("Test Completo de Funciones:", () => {
 	});
 
 	// --------------------------------------------------------------------------------------------------------//
-	describe("PUT /api/productos", () => {
+	describe("PUT /productos", () => {
 		it("Actualizar producto:", async () => {
 			let response = await request
-				.put("/api/productos/" + 4)
+				.put("/productos" + 4)
 				.send(productUpdate);
 			expect(response.status).to.eql(200);
 		});
 
 		it("Verificar datos de producto actualizado", async () => {
-			let updatedProduct = await request.get("/api/productos/" + 4);
+			let updatedProduct = await request.get("/productos" + 4);
 			expect(updatedProduct.body.name).to.eql(productUpdate.name);
 			expect(parseInt(updatedProduct.body.price)).to.eql(
 				parseInt(productUpdate.price)
@@ -71,9 +71,9 @@ describe("Test Completo de Funciones:", () => {
 	});
 
 	// --------------------------------------------------------------------------------------------------------//
-	describe("GET /api/productos/:id", () => {
+	describe("GET /productos/:id", () => {
 		it("Solicitar producto agregado:", async () => {
-			let response = await request.get("/api/productos/" + 4);
+			let response = await request.get("/productos/" + 4);
 			expect(response.status).to.eql(200);
 		});
 	});
@@ -81,7 +81,7 @@ describe("Test Completo de Funciones:", () => {
 	// --------------------------------------------------------------------------------------------------------//
 	describe("DELETE /producto", () => {
 		it("Eliminar producto agregado recientemente:", async () => {
-			let response = await request.delete("/api/productos/" + 4);
+			let response = await request.delete("/productos/" + 4);
 			expect(response.status).to.eql(200);
 			expect(response.body).to.eql({ deleted: true });
 		});

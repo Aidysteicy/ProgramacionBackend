@@ -4,7 +4,7 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 const url = 'http://localhost:8080';
-describe('POST prods ', () => {
+describe('POST productos ', () => {
   const prod = {
     nombre: 'nuevo titulo',
     descripticon: 'producto de prueba desde mocha',
@@ -15,7 +15,7 @@ describe('POST prods ', () => {
   it('should return 200', (done) => {
     chai
       .request(url)
-      .post('/prods')
+      .post('/productos')
       .send(prod)
       .end(function (err, res) {
         expect(res).to.have.status(200);
@@ -25,7 +25,7 @@ describe('POST prods ', () => {
   it('should return an object', (done) => {
     chai
       .request(url)
-      .post('/prods')
+      .post('/productos')
       .send(prod)
       .end((err, res) => {
         expect(res.body)
@@ -42,7 +42,7 @@ describe('GET prods', () => {
   it('should return 200', (done) => {
     chai
       .request(url)
-      .get('/prods')
+      .get('/productos')
       .end((err, res) => {
         if (err) return done(err);
         expect(res).to.have.status(200);
@@ -54,7 +54,7 @@ describe('GET prods', () => {
     let id = '9ad3oa7';
     chai
       .request(url)
-      .get(`/prods/${id}`)
+      .get(`/productos/${id}`)
       .end((err, res) => {
         if (err) return done(err);
         expect(res).to.have.status(200);
@@ -63,13 +63,13 @@ describe('GET prods', () => {
   });
 });
 
-describe('PUT prods', () => {
+describe('PUT productos', () => {
   it('should return 200', (done) => {
     let id = 'o98sdy';
     let data = { nombre: 'nuevo title' };
     chai
       .request(url)
-      .put(`/prods/${id}`)
+      .put(`/productos/${id}`)
       .send(data)
       .end((err, res) => {
         if (err) return done(err);
@@ -85,7 +85,7 @@ describe('DELETE prod(s)', () => {
     let id = '78asui';
     chai
       .request(url)
-      .delete(`/prods/${id}`)
+      .delete(`/productos/${id}`)
       .end((err, res) => {
         if (err) return done(err);
         expect(res).to.have.status(200);
@@ -95,7 +95,7 @@ describe('DELETE prod(s)', () => {
   it('should return 200 deleteAll', (done) => {
     chai
       .request(url)
-      .delete('/prods')
+      .delete('/productos')
       .end((err, res) => {
         if (err) return done(err);
         expect(res).to.have.status(200);
