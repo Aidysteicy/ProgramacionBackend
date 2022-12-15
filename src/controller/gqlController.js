@@ -1,5 +1,6 @@
-const { Producto } = require("../daos/productosDaoDB");
-const contenedor = new Producto();
+const ProductosDao = require('../daos/productosDaoDB.js')
+const model = require('../models/productos')
+const contenedor = new ProductosDao(model)
 
 const getProducts = async () => {
 	const listaProductos = await contenedor.getAll();

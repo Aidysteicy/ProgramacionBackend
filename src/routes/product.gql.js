@@ -1,5 +1,4 @@
-const controllerGraphQL = require("../controllers/gqlController.js");
-
+const controllerGraphQL = require("../controller/gqlController");
 const productSchema = require("../models/gql.js");
 
 routeProdGraphQL = {
@@ -7,8 +6,8 @@ routeProdGraphQL = {
 	rootValue: {
 		getProducts: controllerGraphQL.getProducts,
 		getProdById: controllerGraphQL.getProdById,
-		postProd: controllerGraphQL.postProd,
-		putProd: productsControllerGraphQL.putProd,
+		postProd: controllerGraphQL.postProduct,
+		putProd: controllerGraphQL.putProd,
 		deleteProdById: controllerGraphQL.deleteProdById
 	},
 	graphiql: true
