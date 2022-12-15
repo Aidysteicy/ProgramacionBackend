@@ -5,16 +5,16 @@ type Product {
     id: ID!
     nombre: String,
     descripcion: String,
-    precio: Number,
+    precio: Int,
     foto: String,
-    stock: Number
+    stock: Int
 }
 input ProductInput {
     nombre: String,
     descripcion: String,
-    precio: Number,
+    precio: Int,
     foto: String,
-    stock: Number
+    stock: Int
 }
 type Query {
     getProducts: [Product],
