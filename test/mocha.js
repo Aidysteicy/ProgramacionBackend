@@ -6,9 +6,10 @@ chai.use(chaiHttp);
 const url = 'http://localhost:8080';
 describe('POST prods ', () => {
   const prod = {
-    title: 'nuevo titulo',
-    price: 88,
-    description: 'producto de prueba desde mocha',
+    nombre: 'nuevo titulo',
+    descripticon: 'producto de prueba desde mocha',
+    precio: 88,
+    foto: 'https://----',
     stock: 99,
   };
   it('should return 200', (done) => {
@@ -30,7 +31,7 @@ describe('POST prods ', () => {
         expect(res.body)
           .to.be.an.instanceOf(Object)
           .that.includes.all.keys({
-            prod: ['title', 'price', 'description', 'stock'],
+            prod: ['nombre', 'descripcion', 'precio', 'foto', 'stock'],
           });
         done();
       });
@@ -65,7 +66,7 @@ describe('GET prods', () => {
 describe('PUT prods', () => {
   it('should return 200', (done) => {
     let id = 'o98sdy';
-    let data = { title: 'nuevo title' };
+    let data = { nombre: 'nuevo title' };
     chai
       .request(url)
       .put(`/prods/${id}`)

@@ -3,18 +3,18 @@ const expect = require("chai").expect;
 
 let productNew = {
 	id: "4",
-	title: "Calculadora",
-	thumbnail:
+	nombre: "Calculadora",
+	foto:
 		"https://cdn1.iconfinder.com/data/icons/software-hardware/200/software-24-128.png",
-	price: 555
+	precio: 555
 };
 
 let productUpdate = {
 	id: "4",
-	title: "Calculadora Científica",
-	thumbnail:
+	nombre: "Calculadora Científica",
+	foto:
 		"https://cdn1.iconfinder.com/data/icons/software-hardware/200/software-24-128.png",
-	price: 555
+	precio: 555
 };
 // --------------------------------------------------------------------------------------------------------//
 describe("Test Completo de Funciones:", () => {
