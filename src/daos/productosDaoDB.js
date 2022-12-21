@@ -46,10 +46,10 @@ class ProductosDaoDb extends ProductosDao {
         }
     }
 
-    async getbyField(field){
+    async getbyId(id){
         try {
-            const doc = await this.modelo.find(field)
-            return doc
+            const doc = await this.modelo.find({_id: id})
+            return doc[0]
         } catch (error) {
             throw new CustomError(500, 'error al obtener producto', error)
         }

@@ -7,65 +7,69 @@ const contenedor = new ProductosDao(model)
 
 class prodController {
 
-    async getProd (req, res) {
+    async getProd (ctx) {
         const productos = await contenedor.getAll()
         let flag
         productos===undefined || productos.length===0 ? flag=false : flag=true
-        res.render("main", {isRender: flag, productos: productos});
+       // ctx.render("main", {isRender: flag, productos: productos});
+       ctx.body={
+        status: 'success',
+        productos}
     }
-
-    async getProdId(req,res){
-        const {id} = req.params
+    async getProdId(ctx){
+        const id = ctx.params.id
         const prod = await contenedor.getbyId(id);
-        if(prod=='ok'){
-            res.render('main', {isRender: true, productos: prod})
-         }else{
-             logger.error('No existe un producto con ese ID')
-             res.redirect('/')
-         }
+            //res.render('main', {isRender: true, productos: prod})
+        ctx.body = prod
     }
-    
-    async saveProd (req,res){
+    async saveProd (ctx){
+        const admin = true
         if(admin){
-            const producto = req.body
+            const producto = ctx.request.body
+            console.log(producto)
             const status = await contenedor.save(producto, 'productos')
             if(status=='ok'){
-                logger.info('Producto Guardado') 
+                console.log('Producto Guardado') 
              }else{
                 logger.error('Error al añadir producto')
              }
         }else{
             logger.error({error: -1, descripcion: 'Ruta /api/productos metodo POST no autorizada'})
-        }res.redirect('/')
+        }
+        ctx.body={
+            message: 'producto agregado',
+            producto: ctx.request.body
+        }
     }
-
-    async putProd (req,res){
+    async putProd (ctx){
+        const admin = true
         if(admin){
-           const {id}=req.params
-            const prod = req.body
+           const id=req.params.id
+            const prod = req.request.body
             const mod = await contenedor.saveByID(id, prod)
             if(mod.length!=0 && mod!='nok'){
-                logger.info('Producto Actualizado') 
+                ctx.body={message: 'Producto Actualizado'} 
              }else{
-                logger.error('Error al actualizar producto')
+                ctx.body={message: 'No existe un producto con ese ID'}
              }
         }else{
             logger.error({error: -1, descripcion: 'Ruta /api/productos/:id metodo PUT no autorizada'})
-            res.redirect('/')
+            ctx.redirect('/productos')
         }
     }
-    async deleteProd(req,res){
+    async deleteProd(ctx){
+        const admin = true
         if(admin){
-            const {id}=req.params
+            const id=ctx.params.id
             const prod = await contenedor.deleteById(id)
             if(prod.length!=0 && prod!='nok'){
-                logger.info('Producto Eliminado') 
+                ctx.body={message: 'Producto Eliminado'}
              }else{
-                logger.warn('No existe un producto con ese ID')
+                ctx.body={message: 'No existe un producto con ese ID'}
              }
         }else{
             logger.error({error: -1, descripcion: 'Ruta /api/productos/:id metodo DELETE no autorizada'})
-            res.redirect('/')
+            //ctx.redirect('/')
         }
     }
 }

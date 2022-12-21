@@ -1,4 +1,9 @@
-const express =require('express')
+const Koa =require('koa')
+const {koaBody} = require('koa-body')
+const app = new Koa()
+
+const productRouter = require('./src/routes/productosRoute')
+/*
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
 const logger = require('morgan')
@@ -8,7 +13,6 @@ const handlebars = require('express-handlebars')
 const indexRouter = require('./src/routes/index.js')
 const configMongo = require('./src/config/configMongo.js')
 const passport = require('./src/utils/passport')
-const app = express()
 const compression = require('compression')
 const flash = require('connect-flash')
 
@@ -25,6 +29,21 @@ app.engine('hbs', handlebars.engine({
 
 app.set('views', './src/views')
 app.set('view engine', 'hbs')
+*/
+app.use(koaBody())
+app.use(productRouter.routes())
+app.use(async ctx => {
+    ctx.body = 'hola'
+})
+const PORT = 4000
+const server = app.listen(PORT, ()=>{
+    console.log('Servidor running')
+})
+server.on('error', (err)=>{
+    console.log(err)
+})
+
+/*
 
 app.use(flash())
 app.use(logger('dev'))
@@ -45,5 +64,5 @@ app.use(express.urlencoded({extended: true}))
 app.use(indexRouter)
 app.use('/graphql', graphqlHTTP(routeProdGraphQL));
 app.use(compression())
-
+*/
 module.exports = app

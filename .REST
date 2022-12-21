@@ -1,6 +1,6 @@
 //Test de los productos
 
-GET http://localhost:3005/cookies HTTP/1.1
+GET http://localhost:4000/productos HTTP/1.1
 
 ###
 
@@ -15,18 +15,31 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3005/cookies/age HTTP/1.1
+DELETE http://localhost:4000/productos/639e0def12cae5fe618b30bf HTTP/1.1
 
 ###
 
-PUT  http://localhost:8080/api/productos/3 HTTP/1.1
+POST  http://localhost:4000/productos/ HTTP/1.1
 content-type: application/json
 
 {   
-    "nombre": "Libros",
+    "nombre": "Marcadores",
     "descripcion": "varios",
-    "codigo": "A00003",
+    "codigo": "A00004",
     "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
-    "price": 90,
+    "precio": 90,
     "stock": 50
     }
+####
+POST  http://localhost:4000/productos/ HTTP/1.1
+content-type: application/json
+
+{   
+    "nombre": "Marcadores",
+    "descripcion": "varios",
+    "codigo": "A00004",
+    "foto": "https://cdn.shopify.com/s/files/1/1086/1234/products/257W_opt_1024x1024.jpg?v=1579740224",
+    "precio": 90,
+    "stock": 50
+    }
+
