@@ -1,0 +1,18 @@
+<body>
+    <h1>List of Colors</h1>
+    <form action="/" method="POST">
+      <input type="text" name="color" placeholder="color" />
+      <button type="submit">Guardar</button>
+    </form>
+    <ul style="background-color: black;">
+      <% if(colors) {%> 
+          <% colors.forEach(color => { %>
+               <% if(color === "black") { %>
+       <li style="background-color: whitesmoke; color: <%= color %>"> <%= color %> </li>
+      <% } else {%>
+      <li style="color: <%= color %>"><%= color %></li>
+      <% } %>
+       <% }) %>
+       <% } %>
+    </ul>
+  </body> 
